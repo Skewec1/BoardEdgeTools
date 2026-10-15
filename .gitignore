@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# 构建产物：build_release.py 会自动同步生成，不要提交
+release/plugins/
+
+# 打包出的 PCM 安装包：不进仓库，改为挂到 GitHub Release 附件
+dist/
+*.pcm.zip
+
+# 运行时自动生成（含本机参数），不要提交
+config.json
+
+# 日志
+*.log

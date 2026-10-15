@@ -1,0 +1,43 @@
+{
+  "$schema": "https://go.kicad.org/pcm/schemas/v2",
+  "name": "BoardEdgeTools",
+  "description": "描画 + 裁剪工具：对框选图形或板框做等距内缩/外扩、分段阻焊露铜带（可选输出为可逐段删减的离散图线），并把线条/图形在刀刃处切断（AD Trim 等价）",
+  "description_full": "KiCad 没有 AD 那种「描画外形」命令，也没有能裁 PCB_SHAPE 的 Trim。BoardEdgeTools 提供两个功能：\n\n① 描画：以 PCB 上框选的图形（线段、圆弧、多边形、矩形、圆、敷铜轮廓、封装包围盒）或板框为来源，自动连成闭合轮廓，再用 SHAPE_POLY_SET.Inflate 做等距偏移（负=内缩，正=外扩），输出到任意层（含替换 Edge.Cuts）；另有露铜带模式：指定带宽与外沿距来源图形的距离，生成 F.Mask/B.Mask 开窗带，并可用矩形断开区任意分段（读取标记层矩形 / 手动坐标 / 选中对象包围盒）。\n\n①·补充「离散图线」选项：勾选后描画结果不再输出成整条闭合多边形，而是拆成逐段独立的线段（S_SEGMENT），在指定层生成、源对象保留——省掉 KiCad 原生「从选区创建图线」+ 换层两步，生成的线段可像普通图线一样单段删减修改。带宽/周长与多边形模式完全一致。\n\n② 裁剪：画一条线（或闭合图形）当刀刃，选中要裁的线条，一键在交点处切断。支持走线 PCB_TRACK / 圆弧走线 PCB_ARC / 图形 PCB_SHAPE（线段、圆弧、矩形、圆、多边形、贝塞尔）——这正是 KiCADCutTracksAtLine 不支持的部分（生成的描画轮廓是 PCB_SHAPE 多边形，那个插件切不动）。可选保留两侧（默认，等同 AD Edit → Trim）、删除刀刃内侧、删除刀刃外侧；刀刃不闭合时内外选项自动禁用。敷铜与封装会被跳过，不会破坏。\n\n窗口非模态，可边画边取数据。板内挖槽一并处理。参数持久化到 config.json。",
+  "identifier": "com.github.kicad-user.board-edge-tools",
+  "type": "plugin",
+  "author": {
+    "name": "SU",
+    "contact": {}
+  },
+  "license": "MIT",
+  "resources": {
+    "homepage": "https://github.com/kicad-user/board-edge-tools",
+    "issues": "https://github.com/kicad-user/board-edge-tools/issues"
+  },
+  "tags": [
+    "board-outline",
+    "offset",
+    "solder-mask",
+    "keepout",
+    "edge-cuts",
+    "edge-plating",
+    "trim",
+    "cut-tracks",
+    "discrete-lines",
+    "graphic-lines"
+  ],
+  "versions": [
+    {
+      "version": "1.4.0",
+      "status": "stable",
+      "kicad_version": "8.0",
+      "kicad_version_max": "10.99",
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "runtime": "swig"
+    }
+  ]
+}
