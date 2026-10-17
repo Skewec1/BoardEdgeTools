@@ -11,8 +11,8 @@
   },
   "license": "MIT",
   "resources": {
-    "homepage": "https://github.com/kicad-user/board-edge-tools",
-    "issues": "https://github.com/kicad-user/board-edge-tools/issues"
+    "homepage": "https://github.com/Skewec1/BoardEdgeTools",
+    "issues": "https://github.com/Skewec1/BoardEdgeTools/issues"
   },
   "tags": [
     "board-outline",

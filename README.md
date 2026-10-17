@@ -25,8 +25,9 @@ KiCad PCB 编辑器的 ActionPlugin，补齐两个 AD 有、KiCad 没有的功�
 
 ### 方法 1：PCM「从文件安装」（推荐）
 
-先跑 `python build_release.py` 生成，再用打包好的 `dist/BoardEdgeTools-1.4.0-pcm.zip`：
-KiCad → **插件和内容管理器 (PCM)** → **从文件安装** → 选 zip → 重启 KiCad。
+1. 到 [Releases](https://github.com/Skewec1/BoardEdgeTools/releases) 下载
+   `BoardEdgeTools-1.4.0-pcm.zip`（或自己跑 `python build_release.py` 生成）
+2. KiCad → **插件和内容管理器 (PCM)** → **从文件安装** → 选 zip → 重启 KiCad。
 
 PCM 会把包里 `plugins/` 下的文件装到（实测，KiCad 10.0.6）：
 
